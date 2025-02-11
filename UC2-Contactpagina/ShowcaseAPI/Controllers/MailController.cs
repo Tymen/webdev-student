@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShowcaseAPI.Models;
-
+using System.Net;
+using System.Net.Mail;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ShowcaseAPI.Controllers
@@ -13,9 +14,21 @@ namespace ShowcaseAPI.Controllers
         [HttpPost]
         public ActionResult Post([Bind("FirstName, LastName, Email, Phone")] Contactform form)
         {
-            //Op brightspace staan instructies over hoe je de mailfunctionaliteit werkend kunt maken:
-            //Project Web Development > De showcase > Week 2: contactpagina (UC2) > Hoe verstuur je een mail vanuit je webapplicatie met Mailtrap?
-            
+            try
+            {
+                var client = new SmtpClient("live.smtp.mailtrap.io", 587)
+                {
+                    Credentials = new NetworkCredential("api", "bf6337e105f56a9cf643cab1f1738f41"),
+                    EnableSsl = true
+                };
+                client.Send("hello@demomailtrap.com", "tymenvis@gmail.com", "Hello world", "testbody");
+                Console.WriteLine(form.FirstName + " " + form.LastName);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+
             return Ok();
         }
     }
