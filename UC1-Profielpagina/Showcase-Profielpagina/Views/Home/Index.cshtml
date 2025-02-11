@@ -1,9 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<header class="header-desktop">
+    <div class="header-backdrop"></div>
+</header>
 <div class="page">
-    <header>
+    <header class="header-mobile">
         <div class="header-backdrop"></div>
     </header>
     <section class="section personalia-main">
@@ -27,8 +29,44 @@
                 Let's connect and grow together in this exciting tech journey!
             </p>
         </section>
-        <section class="skills-main">
+        <section class="skills-main-desktop">
+            <h1>Skills</h1>
+            <hr/>
+            <section class="skills-content-main">
+                <section class="skill-content">
+                    <h2>Programming languagues</h2>
+                    <ul>
+                        <li>C#</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>PHP</li>
+                        <li>Javascript</li>
+                        <li>HTML & CSS</li>
+                    </ul>
+                </section>
 
+                <section class="skill-content">
+                    <h2>Technologies</h2>
+                    <ul>
+                        <li>Vuejs</li>
+                        <li>Jupyter notebook</li>
+                        <li>Springboot</li>
+                        <li>Laravel</li>
+                        <li>Docker</li>
+                        <li>NodeJS</li>
+                    </ul>
+                </section>
+
+                <section class="skill-content">
+                    <h2>Soft skills</h2>
+                    <ul>
+                        <li>Team player</li>
+                        <li>Win Win mindset</li>
+                        <li>Fluent english</li>
+                        <li>Basic german</li>
+                    </ul>
+                </section>
+            </section>
         </section>
     </section>
     <section class="section profile-experience-main">
@@ -171,6 +209,30 @@
                 </p>
             </div>
         </div>
+        <section class="profile-education-main-desktop">
+            <h1>Opleiding</h1>
+            <hr/>
+            <div class="experience-block">
+                <div class="experience-block-heading">
+                    <div class="left">
+                        <h2>HBO-ICT Software enginering</h2>
+                        <p class="experience-block-location">Christelijke hogeschool Windesheim | Zwolle</p>
+                    </div>
+                    <div class="right">
+                        2021 - heden
+                    </div>
+                </div>
+            </div>
+            <div class="experience-block-heading">
+                <div class="left">
+                    <h2>Applicatie & Mediaontwikkeling</h2>
+                    <p class="experience-block-location">Landstede MBO | Zwolle</p>
+                </div>
+                <div class="right">
+                    2019 - 2021
+                </div>
+            </div>
+        </section>
     </section>
     <section id="skills-mobile" class="section profile-skills-mobile">
         <h1>Skills</h1>
@@ -211,8 +273,28 @@
             </section>
         </section>
     </section>
-    <section class="section profile-education-main">
+    <section class="section profile-education-main-mobile">
         <h1>Opleiding</h1>
         <hr/>
+        <div class="experience-block">
+            <div class="experience-block-heading">
+                <div class="left">
+                    <h2>HBO-ICT Software enginering</h2>
+                    <p class="experience-block-location">Christelijke hogeschool Windesheim | Zwolle</p>
+                </div>
+                <div class="right">
+                    2021 - heden
+                </div>
+            </div>
+        </div>
+        <div class="experience-block-heading">
+            <div class="left">
+                <h2>Applicatie & Mediaontwikkeling</h2>
+                <p class="experience-block-location">Landstede MBO | Zwolle</p>
+            </div>
+            <div class="right">
+                2019 - 2021
+            </div>
+        </div>
     </section>
 </div>
