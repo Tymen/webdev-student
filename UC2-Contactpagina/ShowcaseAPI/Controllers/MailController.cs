@@ -2,6 +2,9 @@
 using ShowcaseAPI.Models;
 using System.Net;
 using System.Net.Mail;
+using Microsoft.Extensions.Options;
+using ShowcaseAPI.Models.config;
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ShowcaseAPI.Controllers
@@ -10,19 +13,24 @@ namespace ShowcaseAPI.Controllers
     [ApiController]
     public class MailController : ControllerBase
     {
+        private readonly MailtrapConfig _mailtrapConfig;
+
+        public MailController(IOptions<MailtrapConfig> config)
+        {
+            _mailtrapConfig = config.Value;
+        }
         // POST api/<MailController>
         [HttpPost]
         public ActionResult Post([Bind("FirstName, LastName, Email, Phone")] Contactform form)
         {
             try
             {
-                var client = new SmtpClient("live.smtp.mailtrap.io", 587)
+                var client = new SmtpClient(_mailtrapConfig.SMTPUrl, _mailtrapConfig.Port)
                 {
-                    Credentials = new NetworkCredential("api", "bf6337e105f56a9cf643cab1f1738f41"),
+                    Credentials = new NetworkCredential("api", _mailtrapConfig.Password),
                     EnableSsl = true
                 };
                 client.Send("hello@demomailtrap.com", "tymenvis@gmail.com", "Hello world", "testbody");
-                Console.WriteLine(form.FirstName + " " + form.LastName);
             }
             catch (Exception ex)
             {
